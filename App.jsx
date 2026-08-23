@@ -407,10 +407,11 @@ export default function App() {
 
         if (error) throw error;
 
-        if (row && row.data) {
+        if (row && row.data && row.data.girls) {
           setData(row.data);
           lastWrittenJson.current = JSON.stringify(row.data);
         } else {
+          
           const seed = defaultData();
           const { error: insertError } = await supabase
             .from(TABLE)
